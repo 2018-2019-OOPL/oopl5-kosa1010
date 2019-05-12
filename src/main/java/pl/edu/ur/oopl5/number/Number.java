@@ -4,16 +4,30 @@ package pl.edu.ur.oopl5.number;
  */
 public class Number implements NumberInterfaces {
 
-    public void setNumber(String number) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    int number;
+
+    public Number(String number) {
+        this.number = Integer.valueOf(number);
     }
 
     public int factorial() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (number >= 0) {
+            int wynik = 1;
+            for (int i = 1; i < number + 1; i++) {
+                wynik *= i;
+            }
+            return wynik;
+        } else {
+            return 0;
+        }
     }
 
     public int multiply(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return number * i;
+    }
+
+    public void setNumber(String number) {
+        this.number = Integer.valueOf(number);
     }
 
 }
