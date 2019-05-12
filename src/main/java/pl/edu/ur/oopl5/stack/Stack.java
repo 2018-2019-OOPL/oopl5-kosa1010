@@ -17,16 +17,9 @@ public class Stack extends AbstractStack {
     @Override
     public void push(int i) {
         if (tab.length - 1 == size) {
-            int tab2[] = new int[tab.length * 2];
-            for (int j = 0; j < tab.length; j++) {
-                tab2[j] = tab[j];
-            }
-            tab = tab2;
-            tab[size + 1] = i;
-            size++;
-            index++;
+            throw new StackOverflowError();
         } else {
-            tab[size + 1] = i;
+            tab[size] = i;
             size++;
             index++;
         }
@@ -34,7 +27,13 @@ public class Stack extends AbstractStack {
 
     @Override
     public int pop() {
-        return tab[size];
+        if (index < 0) {
+            throw new EmptyStackException();
+        }
+        int tmp = tab[size-1];
+        index--;
+        size--;
+        return tmp;
     }
 
     @Override
